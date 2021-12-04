@@ -1,13 +1,15 @@
-% !TEX program = xelatex
-
 \documentclass{article}
 
 \usepackage[bookmarks]{hyperref}
 \usepackage{amsmath}
+\usepackage{enumitem}
+
+\newtheorem{mydef}{Definition}
 
 % \usepackage{pst-poker}
 % \psset{linewidth=25pt}
 
+\linespread{1.2}
 
 
 \title{Notes: Statistics}
@@ -26,6 +28,7 @@
 
 \pagenumbering{arabic}
 
+
 \section{Introduction}
 
 In the beginning there was a population, and over that population, there was a distribution.  As mortals, and not gods, if we want to try to understand this distribution the best we can do is attempt to observe features of the distribution--hopefully at random--and use that data to build a blurry picture of the truth lying behind our perception.  
@@ -40,17 +43,38 @@ Throughout these notes I will include custom visualizations and code snippets, f
 \part{Data: Production, Visualization, and Description}
 \section{Producing Data}
 
-There are many ways to get data, not all are equal, and, even more importantly, not all are equally as useful.  
+There are many ways to get data, not all are equal, and, even more importantly, not all are equally as useful. \textit{Bias} can seep into data in a number of ways depending on how the data is obtained. 
 
 The first step in getting data is to decide on the \textit{population} we are interested in, which is typically very large (if it weren't we could just sample the whole population and there would be no need for statistics!). 
 
-The next step is to devise and execute a plan to \textit{sample} a certain number of members of the population, and obtain some sort of data from them: either \textit{numerical} (e.g. height or weight) or \textit{categorical} (e.g. political party or favorite flavor of ice cream)
+The next step is to decide what kind of data we are interested in: namely either \textit{numerical} (e.g. height or weight) or \textit{categorical} (e.g. political party or favorite flavor of ice cream). Denoting our \textit{random} variable of interest as $X$: 
 
+\begin{mydef}[Numerical Variable] 
+A feature obtained from an observation which has a random numerical value according to the underlying distribution, e.g. $X \sim N(\mu, \sigma)$.
+\end{mydef}
 
+\begin{mydef}[Categorical Variable] 
+A feature obtained from an observation which takes it's value from a set of possible categories $\{x_1, x_2, \dots , x_n\}$ and $P(X = x_i) = p_i$
+\end{mydef}
+
+The final step is to decide how we plan on getting our data; procedures for which can be broken up into two categories: \textit{sampling} and \textit{experimenting} 
 
 \subsection{Sampling}
 
-\subsection{Experimenation}
+Since populations are so large, and we can't just issue a census, we need a way to get a representative \textit{sample} (say of size $n$) of the population, that we can analyze.  There are various ways to sample and each comes with it's advantages and disadvantages.
+\bigbreak
+\noindent Here I will list some of the typical sampling methods:
+
+\begin{description}[style=nextline]
+\item [Simple Random Sample] This is the ideal sample and involves enumerating all of the possible members of the population and randomly selecting $n$ numbers in the range of the population size
+
+\item [Survey Sample] Here $n$ 
+
+\item [Stratified Random Sample]
+    
+\end{description}
+
+\subsection{Experimenting}
 
 
 \section{Data Visualization}
