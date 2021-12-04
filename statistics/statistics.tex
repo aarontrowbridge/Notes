@@ -5,8 +5,8 @@
 \usepackage[bookmarks]{hyperref}
 \usepackage{amsmath}
 
-\usepackage{pst-poker}
-\psset{linewidth=25pt}
+% \usepackage{pst-poker}
+% \psset{linewidth=25pt}
 
 
 
@@ -28,17 +28,33 @@
 
 \section{Introduction}
 
-Hi, this is a test. Is this your card \As?
+In the beginning there was a population, and over that population, there was a distribution.  As mortals, and not gods, if we want to try to understand this distribution the best we can do is attempt to observe features of the distribution--hopefully at random--and use that data to build a blurry picture of the truth lying behind our perception.  
+
+Dramatization aside, this is the principle assumption and goal of statistics: infer knowledge about a hidden (parameterized) distribution by taking random samples and applying mathematical techniques to the data obtained. Usually we are either trying to estimate the \textit{true} hidden parameters or test hypotheses we might have about those parameters. 
+
+In these notes I intend to condense the essential methods needed to piece together an actionable representation of the uncertain world around us.  Statistical analysis of data is an essential tool in almost every field imaginable: from physics to psychology to finance, and everywhere in between.
+
+Throughout these notes I will include custom visualizations and code snippets, for which I will be using the Julia programming language.  Code for everything in this document, including the \LaTeX \  source code, can be found on my github. 
+
+\newpage
+\part{Data: Production, Visualization, and Description}
+\section{Producing Data}
+
+There are many ways to get data, not all are equal, and, even more importantly, not all are equally as useful.  
+
+The first step in getting data is to decide on the \textit{population} we are interested in, which is typically very large (if it weren't we could just sample the whole population and there would be no need for statistics!). 
+
+The next step is to devise and execute a plan to \textit{sample} a certain number of members of the population, and obtain some sort of data from them: either \textit{numerical} (e.g. height or weight) or \textit{categorical} (e.g. political party or favorite flavor of ice cream)
 
 
-\begin{equation}
-     x = 3 
-\end{equation}
 
-\begin{align*}
- \tau &= 2\pi \\ 
-      &= \int d\theta \\
-\end{align*}
+\subsection{Sampling}
+
+\subsection{Experimenation}
+
+
+\section{Data Visualization}
+\section{Descriptive Statistics}
 
 \newpage
 \part{Probability Theory}
