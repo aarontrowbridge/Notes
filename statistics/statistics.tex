@@ -50,35 +50,58 @@ The first step in getting data is to decide on the \textit{population} we are in
 The next step is to decide what kind of data we are interested in: namely either \textit{numerical} (e.g. height or weight) or \textit{categorical} (e.g. political party or favorite flavor of ice cream). Denoting our \textit{random} variable of interest as $X$: 
 
 \begin{mydef}[Numerical Variable] 
-A feature obtained from an observation which has a random numerical value according to the underlying distribution, e.g. $X \sim N(\mu, \sigma)$.
+A feature obtained from an observation which has a random continuous numerical value according to the underlying distribution, e.g. $X \sim N(\mu, \sigma)$.
 \end{mydef}
 
 \begin{mydef}[Categorical Variable] 
-A feature obtained from an observation which takes it's value from a set of possible categories $\{x_1, x_2, \dots , x_n\}$ and $P(X = x_i) = p_i$
+A feature obtained from an observation which takes it's value from a set of possible categories $\{x_1, x_2, \dots , x_k\}$ and $P(X = x_i) = p_i$
 \end{mydef}
 
 The final step is to decide how we plan on getting our data; procedures for which can be broken up into two categories: \textit{sampling} and \textit{experimenting} 
 
 \subsection{Sampling}
 
-Since populations are so large, and we can't just issue a census, we need a way to get a representative \textit{sample} (say of size $n$) of the population, that we can analyze.  There are various ways to sample and each comes with it's advantages and disadvantages.
-\bigbreak
-\noindent Here I will list some of the typical sampling methods:
+Since populations are so large, and we can't just issue a census, we need a way to get a representative \textit{sample} (say of size $n$) of the population, that we can analyze.  There are various ways to sample and each comes with it's advantages and disadvantages. Here we list some of the ``good'' sampling methods:
 
 \begin{description}[style=nextline]
-\item [Simple Random Sample] This is the ideal sample and involves enumerating all of the possible members of the population and randomly selecting $n$ numbers in the range of the population size
+\item [Simple Random Sample (SRS)] This is the ideal sample and involves enumerating all of the possible members of the population and randomly selecting $n$ numbers in the range of the population size.
 
-\item [Survey Sample] Here $n$ 
+\item [Survey Sample] Here $n$ individuals are chosen using a SRS (ideally) and asked to complete a survey, which can result in numerical or categorical data or both. This is a ``good'' sample if all who receive a survey complete it.
 
-\item [Stratified Random Sample]
+\item [Stratified Random Sample] In this set up the population is segmented into some number of \textit{strata} and then a SRS used to gather data from each.
+    
+\item [Multistage Sample] Iterated grouping and random sampling with multiple layers.
+
+\end{description}
+
+\noindent Bias, where certain outcomes are systematically favored, can accrue when the sampling method is not random.  Here I will list some of the types of bias that can arise:
+
+\begin{description}[style=nextline]
+\item [Convenience Bias] Individuals are chosen based on ease of access.
+
+\item [Response Bias] Individuals are issued a survey and have an option not to complete the survey.
+
+\item [Undercoverage Bias] When some individuals in a population are not accessible due to the design of a survey.
+
     
 \end{description}
+
+\noindent 
+\begin{description}[style=nextline]
+\item [] 
+
+\end{description}
+
 
 \subsection{Experimenting}
 
 
 \section{Data Visualization}
 \section{Descriptive Statistics}
+
+\begin{mydef}[Unbiased Estimator]
+A statistic (e.g. $\bar x$) used to estimate a population parameter (e.g. $\mu$) s.t. $E(\bar x) = \mu$ 
+\end{mydef}
 
 \newpage
 \part{Probability Theory}
