@@ -2,9 +2,13 @@
 
 \usepackage[bookmarks]{hyperref}
 \usepackage{amsmath}
+\usepackage{amsfonts}
 \usepackage{enumitem}
 
 \newtheorem{mydef}{Definition}
+
+\newcommand{\xbar}{\bar x}
+
 
 % \usepackage{pst-poker}
 % \psset{linewidth=25pt}
@@ -100,7 +104,7 @@ Since populations are so large, and we can't just issue a census, we need a way 
 \section{Descriptive Statistics}
 
 \begin{mydef}[Unbiased Estimator]
-A statistic (e.g. $\bar x$) used to estimate a population parameter (e.g. $\mu$) s.t. $E(\bar x) = \mu$ 
+A statistic (e.g. $\xbar$) used to estimate a population parameter (e.g. $\mu$) s.t. $E(\xbar) = \mu$ 
 \end{mydef}
 
 \newpage
@@ -117,7 +121,109 @@ A statistic (e.g. $\bar x$) used to estimate a population parameter (e.g. $\mu$)
 
 \newpage
 \part{Statistical Inference}
-\section{Parameter Estimation}
+
+Thus far we have looked at how to extract data from a population, describe the data with summary statistics, and visualize the data with various types of plots.  We will assume the obtained data had to come from a distribution that we don't have direct access to -- we can only sample from it.  Another assumption we will make is that the hidden distribution can be \textit{parameterized}, that is there is a finite set of numbers that perfectly describe the distribution that we just don't know (a seemingly flimsy assumption but one that is necessary and fairly powerful). Now we will turn or attention to the principle task of statistics: inferring knowledge about the underlying distribution's parameters from a sample.
+
+\section{Sampling Distribution}
+
+Let's assume that the distribution we are after can be described by it's position, or mean $\mu$, and it's standard deviation $\sigma$.  Which means our random variable $X \sim Distribution(\mu, \sigma)$ will give us values of $x_i$ for the $i$-th measurement.  If we take a sample of size $n$ and calculate the \textit{sample mean}
+
+\begin{equation}
+\xbar = \frac{1}{n} \sum_{i=1}^n x_i.
+\end{equation}
+
+\noindent
+The central limit theorem tells us that as $n$ gets large, 
+
+\begin{equation}
+\label{eq:sample_dist}
+\xbar \sim N(\mu, \sigma / \sqrt{n}), 
+\end{equation}
+
+
+\noindent
+which implies that
+
+\begin{equation}
+z = \frac{\xbar - \mu}{\sigma \sqrt{n}} \sim N(0,1)
+\end{equation}
+
+\noindent
+has a standard normal distribution which we can use to easily do calculations.
+
+
+
+\newpage
+\section{Parameter Estimation: Confidence Intervals}
+
+If our goal is to estimate the value of some parameter, the population mean $\mu$ for instance, we can take a sample and calculate the sample mean $\xbar$, and use the fact stemming from it's distribution (\ref{eq:sample_dist}), that $\mathbb{E}(\xbar) = \mu$, to construct a range around $\xbar$ s.t. we can be confidant that $\mu$ lies within that range. In general a confidence interval will look like
+
+\begin{equation}
+    \text{estimate} \pm \text{margin of error}
+\end{equation}
+
+\subsubsection*{One sample $z$-confidence interval}
+
+Given a sample $\{x_1, x_2, \dots, x_n\}$ taken from a population with mean $\mu$ and known standard deviation $\sigma$, we can calculate a $\gamma$-level confidence interval around $\xbar$,  given by
+
+\begin{equation}
+\boxed{
+\xbar \pm z^* \frac{\sigma}{\sqrt{n}}
+}
+\end{equation}
+
+\noindent
+Here, $z^*$ is the critical value defined implicitly by 
+
+\begin{equation}
+\gamma = \text{area under standard normal curve between } -z^* \text{ and } z^* 
+\end{equation}
+
+\noindent
+For example, if $\gamma = .6 = 60\%$, then $z* = 1$, by the 60-95-99.7 rule. 
+
+
+\subsubsection*{One sample $t$-confidence interval}
+
+If we don't know $\sigma$ then all is not lost, we simply use the sample standard deviation
+
+\begin{equation}
+s = \sqrt{ \frac{1}{n - 1} \sum_{i=1}^n (x_i - \xbar)^2}
+\end{equation}
+
+\noindent
+in place of $\sigma$ and 
+
+\begin{equation}
+t = \frac{\xbar - \mu}{s \sqrt{n}} 
+\end{equation}
+
+\noindent
+in place of $z$ which has a $t$-distribution, with $\nu = n - 1$ degrees of freedom.  The $\gamma$-level confidence interval in this case is then given by
+
+\begin{equation}
+\boxed{
+\xbar \pm t^* \frac{s}{\sqrt{n}} 
+}
+\end{equation}
+
+\noindent
+where $t^*$ is defined analogously to $z^*$. 
+
+
+\subsubsection*{Two sample $t$-confidence interval}
+
+Given two samples of size $n_1$ and $n_2$, respectively drawn from two populations with means $\mu_1$ and $\mu_2$, we can find a $\gamma$-level confidence interval for $\mu_1 - \mu_2$, given by 
+
+\begin{equation}
+\boxed{
+(\xbar_1 - \xbar_2) \pm t^* \sqrt{\frac{s_1^2}{n_1} +\frac{s_2^2}{n_2}} 
+}
+\end{equation}
+
+\noindent
+where $t^*$ is found using the $t$-distribution with $\nu = \min\{n_1 - 1, n_2 - 1\}$
+
 \section{Hypothesis Testing}
 
 \newpage
